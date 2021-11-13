@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 // ROTTE PUBBLICHE
 Route::get('/', 'PageController@index');
+Route::get('/posts', 'PostController@index');
 
 // ROTTE AUTENTICAZIONE
 Auth::routes();
