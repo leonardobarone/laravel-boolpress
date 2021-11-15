@@ -8,7 +8,7 @@
             {{-- TITLE --}}
             <div class="form-group">
                 <label for="title">Titolo</label>
-                <input type="text" class="form-control" name="title" id="title" value="{{$post->title}}" placeholder="Inserisci il titolo">
+                <input type="text" class="form-control" name="title" id="title" value="{{ old('title') ?? $post->title}}" placeholder="Inserisci il titolo">
                 @error('title')
                     <div class="alert alert-danger">{{$message}}</div>
                 @enderror
@@ -16,8 +16,8 @@
             {{-- CONTENT --}}
             <div class="form-group">
                 <label for="content">Contenuto</label>
-                <textarea cols="30" rows="10" class="form-control" name="content" id="content" placeholder="Inserisci un contenuto">{{$post->content}}</textarea>
-                @error('title')
+                <textarea cols="30" rows="10" class="form-control" name="content" id="content" placeholder="Inserisci un contenuto">{{ old('content') ?? $post->content}}</textarea>
+                @error('content')
                     <div class="alert alert-danger">{{$message}}</div>
                 @enderror
             </div>
