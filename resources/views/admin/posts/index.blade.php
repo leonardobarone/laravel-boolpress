@@ -17,6 +17,7 @@
                 <th scope="col">Titolo</th>
                 <th scope="col">Slug</th>
                 <th scope="col">Visualizza</th>
+                <th scope="col">Modifica</th>
                 <th scope="col">Elimina</th>
             </tr>
         </thead>
@@ -27,6 +28,7 @@
                     <td>{{$post->title}}</td>
                     <td>{{$post->slug}}</td>
                     <td><a href="{{ route('admin.posts.show' , $post['id']) }}" class="btn btn-primary">Visualizza</a></td>
+                    <td><a href="{{ route('admin.posts.edit' , $post['id']) }}" class="btn btn-warning">Modifica</a></td>
                     <td>
                         <form action="{{ route('admin.posts.destroy' , $post['id']) }}" method="POST">
                             @csrf

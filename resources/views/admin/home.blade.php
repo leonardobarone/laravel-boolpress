@@ -14,8 +14,6 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    
                     <a href="{{ route('admin.posts.index') }}">Visualizza tutti i posts</a>
                 </div>
             </div>
@@ -23,3 +21,7 @@
     </div>
 </div>
 @endsection
+
+
+
+
