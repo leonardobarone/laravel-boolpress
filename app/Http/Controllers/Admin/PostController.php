@@ -6,13 +6,14 @@ use App\Post;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use App\Category;
 
 class PostController extends Controller
 {
     protected $validationRules = [
         "title" => "required|string|max:100",
         "content" => "required|string",
+        "category_id" => "nullable|exists:categories,id"
     ];
     /**
      * Display a listing of the resource.
@@ -32,7 +33,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.posts.create');
+        $categories = Category::all();
+        return view('admin.posts.create', compact('categories'));
     }
 
     /**
@@ -76,7 +78,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('admin.posts.edit', compact('post'));
+        $categories = Category::all();
+        return view('admin.posts.edit', compact('post', 'categories'));
     }
 
     /**

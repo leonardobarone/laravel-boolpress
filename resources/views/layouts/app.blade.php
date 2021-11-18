@@ -34,7 +34,9 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li><a class="text-dark mr-2" href="{{route('admin.posts.index')}}">Tutti i posts</a></li>
-                        <li><a class="text-dark" href="{{route('admin.posts.create')}}">Crea un posts</a></li>
+                        <li><a class="text-dark mr-2" href="{{route('admin.posts.create')}}">Crea un posts</a></li>
+                        <li><a class="text-dark mr-2" href="{{route('admin.categories.index')}}">Tutti le categorie</a></li>
+                        <li><a class="text-dark" href="{{route('admin.categories.create')}}">Crea una categoria</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
