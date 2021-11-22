@@ -3,6 +3,7 @@
 @section('content')
     <div class="container">
         <h1>{{$post->title}}</h1>
+        <p>Categoria: {{!empty($post["category"]["name"]) ? $post["category"]["name"] : "Non esiste"}}</p>
         <p>{{$post->content}}</p>
     </div>
 @endsection

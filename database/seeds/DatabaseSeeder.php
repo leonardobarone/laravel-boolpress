@@ -11,6 +11,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UserSeeder::class);
+        $this->call([
+            CategoriesTableSeeder::class,
+            PostsTableSeeder::class
+        ]);
+        // $this->call(UserSeeder::class oppure [array di UserSeeder::class, e altri senza importare le classi]);
+        // php artisan db:seed (senza aggiungere altro)
     }
 }
+
+// composer dump-autoload

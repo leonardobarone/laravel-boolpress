@@ -86,13 +86,16 @@ class CategoryController extends Controller
         // validation
         $validation = $this->validationRules;
         $validation['name'] = $validation['name'] . ",{$category['id']}";
+        
         $request->validate($validation);
+        
         // creazione record
-        $category->fill($request->all());
-
         if ($category->name != $request->name){
             $category->slug = Str::of($request['name'])->slug('-');
         }
+
+        $category->fill($request->all());
+        
 
         $category->save();
         // redirect
@@ -105,8 +108,10 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        //
+        $category->delete();
+
+        return redirect()->route('admin.categories.index')->with('success', "La categoria n°{$category['id']} è stata eliminata!");
     }
 }

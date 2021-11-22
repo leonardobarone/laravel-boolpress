@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Tag;
 use App\Post;
+use App\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Category;
 
 class PostController extends Controller
 {
@@ -34,7 +35,8 @@ class PostController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('admin.posts.create', compact('categories'));
+        $tags = Tag::all();
+        return view('admin.posts.create', compact('categories', 'tags'));
     }
 
     /**
@@ -93,7 +95,7 @@ class PostController extends Controller
     {
         $request->validate($this->validationRules);
 
-        if($post->title != $request->title ) {
+        if($post->title == $request->title ) {
             $post->slug = $this->getSlug($request->title);
         }
 
@@ -110,7 +112,7 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
+    {   
         $post = Post::find($id);
         $post->delete();
         return redirect()->route('admin.posts.index')->with('success', "Il post {$post['id']} è stato eliminato");

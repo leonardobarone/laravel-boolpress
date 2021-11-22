@@ -33,6 +33,15 @@
             <div class="alert alert-danger">{{$message}}</div>
             @enderror
         </div>
+        {{-- TAGS --}}
+        <div class="form-group">
+            @foreach ($tags as $tag)
+                <div class="custom-control custom-checkbox">
+                    <input name="tags[]" value="{{$tag['id']}}" type="checkbox" class="custom-control-input" id="tag-{{$tag['id']}}">
+                    <label for="tag-{{$tag['id']}}" class="custom-control-label">{{$tag->name}}</label>
+                </div>
+            @endforeach
+        </div>
         <button type="submit" class="btn btn-primary">Crea Post</button>
     </form>
 </div>
