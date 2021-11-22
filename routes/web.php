@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'PageController@index');
 Route::get('/posts', 'PostController@index')->name('guests.posts.index');
 Route::get('/posts/{slug}', 'PostController@show')->name('guest.posts.show');
+Route::get('/api-posts', 'PageController@apiPosts')->name('posts.api');
 
 // ROTTE AUTENTICAZIONE
 Auth::routes();

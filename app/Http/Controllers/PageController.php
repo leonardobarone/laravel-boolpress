@@ -9,4 +9,9 @@ class PageController extends Controller
     public function index(){
         return view('guest.welcome');
     }
+
+    public function apiPosts()
+    {
+        return view('guest.api');
+    }
 }
