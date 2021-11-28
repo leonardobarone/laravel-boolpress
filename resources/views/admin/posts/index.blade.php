@@ -17,6 +17,7 @@
                 <th scope="col">Titolo</th>
                 <th scope="col">Slug</th>
                 <th scope="col">Category</th>
+                <th scope="col">Tags</th>
                 <th scope="col">Visualizza</th>
                 <th scope="col">Modifica</th>
                 <th scope="col">Elimina</th>
@@ -30,6 +31,13 @@
                     <td>{{$post->slug}}</td>
                     {{-- if issett postCategoryName ? postCategoryName : '' --}}
                     <td>{{$post['category']['name'] ?? ""}}</td>
+                    <td>
+                        @if (count($post['tags']) > 0)
+                            @foreach ($post['tags'] as $tag)
+                                <span class="badge badge-primary">{{$tag->name}}</span>
+                            @endforeach           
+                        @endif
+                    </td>
                     <td><a href="{{ route('admin.posts.show' , $post['id']) }}" class="btn btn-primary">Visualizza</a></td>
                     <td><a href="{{ route('admin.posts.edit' , $post['id']) }}" class="btn btn-warning">Modifica</a></td>
                     <td>

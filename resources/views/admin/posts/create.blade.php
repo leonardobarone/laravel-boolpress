@@ -36,11 +36,14 @@
         {{-- TAGS --}}
         <div class="form-group">
             @foreach ($tags as $tag)
-                <div class="custom-control custom-checkbox">
-                    <input name="tags[]" value="{{$tag['id']}}" type="checkbox" class="custom-control-input" id="tag-{{$tag['id']}}">
+            <div class="custom-control custom-checkbox">
+                    <input {{in_array($tag['id'], old('tags', [])) ? "checked" : null}} name="tags[]" value="{{$tag['id']}}" type="checkbox" class="custom-control-input" id="tag-{{$tag['id']}}">
                     <label for="tag-{{$tag['id']}}" class="custom-control-label">{{$tag->name}}</label>
                 </div>
             @endforeach
+            @error('tags')
+                <div class="alert alert-danger">{{$message}}</div>
+            @enderror
         </div>
         <button type="submit" class="btn btn-primary">Crea Post</button>
     </form>
